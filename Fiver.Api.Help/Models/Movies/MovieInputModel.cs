@@ -4,7 +4,6 @@ namespace Fiver.Api.Help.Models.Movies
 {
     public class MovieInputModel
     {
-        public int Id { get; set; }
         [Required]
         public string Title { get; set; }
         public int ReleaseYear { get; set; }

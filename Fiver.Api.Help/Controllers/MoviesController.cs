@@ -31,11 +31,22 @@ namespace Fiver.Api.Help.Controllers
         /// <summary>
         /// Adds a new movie
         /// </summary>
+        /// <remarks>
+        /// A sample request body
+        /// 
+        ///     POST /movies
+        ///     {       
+        ///         "title": "Thunderball",
+        ///         "releaseYear": 1965,
+        ///         "summary": "James Bond heads to The Bahamas to recover two nuclear warheads stolen by SPECTRE"
+        ///     }
+        /// </remarks>
         /// <returns>Newly added movie</returns>
         /// <response code="201">if movie created</response>
         /// <response code="400">if input null or invalid</response>
         [HttpPost]
         [ProducesResponseType(typeof(MovieOutputModel), 201)]
+        [Produces("application/json", Type = typeof(MovieOutputModel))]
         public IActionResult Create([FromBody]MovieInputModel inputModel)
         {
             var outputModel = new MovieOutputModel();
