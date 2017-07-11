@@ -2,7 +2,9 @@
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.PlatformAbstractions;
 using Swashbuckle.AspNetCore.Swagger;
+using System.IO;
 
 namespace Fiver.Api.Help
 {
@@ -18,6 +20,9 @@ namespace Fiver.Api.Help
                     Title = "Fiver.Api Help",
                     Version = "v1"
                 });
+
+                var xmlDocPath = PlatformServices.Default.Application.ApplicationBasePath;
+                options.IncludeXmlComments(Path.Combine(xmlDocPath, "Fiver.Api.Help.xml"));
             });
 
             services.AddMvc();

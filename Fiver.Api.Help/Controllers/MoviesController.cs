@@ -15,6 +15,12 @@ namespace Fiver.Api.Help.Controllers
             return Ok(outputModel);
         }
 
+        /// <summary>
+        /// Returns a Movie
+        /// </summary>
+        /// <returns>Existing movie</returns>
+        /// <response code="200">if movie found</response>
+        /// <response code="404">if movie not found</response>
         [HttpGet("{id}", Name = "GetMovie")]
         public IActionResult Get(int id)
         {
@@ -22,7 +28,14 @@ namespace Fiver.Api.Help.Controllers
             return Ok(outputModel);
         }
 
+        /// <summary>
+        /// Adds a new movie
+        /// </summary>
+        /// <returns>Newly added movie</returns>
+        /// <response code="201">if movie created</response>
+        /// <response code="400">if input null or invalid</response>
         [HttpPost]
+        [ProducesResponseType(typeof(MovieOutputModel), 201)]
         public IActionResult Create([FromBody]MovieInputModel inputModel)
         {
             var outputModel = new MovieOutputModel();
